@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="textColorLight">#000000</color>
+    <color name="textColorDark">#FFFFFF</color>
+    <color name="green">#FF388E3C</color>
+    <color name="black">#FF000000</color>
+    <color name="colorPrimary">#751BEB</color>
+    <color name="colorAccent2">#FFC107</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorPrimary2">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorLightBlue">#0DA2E6</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorText">#212121</color>
+    <color name="colorSecondary">#FF5722</color>
+    <color name="colorButton">#4CAF50</color>
+    <color name="colorMain">#E58A2FBA</color>
+    <color name = "colorAppBar">#C8661E8C</color>
+    <array name="random_colors">
+        <item name="randomColor1">#FF0000</item>
+        <item name="randomColor2">#00FF00</item>
+        <item name="randomColor3">#0000FF</item>
+        <item name="randomColor4">#FFFF00</item>
+        <item name="randomColor5">#FF00FF</item>
+        <item name="randomColor6">#00FFFF</item>
+        <item name="randomColor7">#FFA500</item>
+        <item name="randomColor8">#800080</item>
+        <item name="randomColor9">#008000</item>
+        <item name="randomColor10">#FFC0CB</item>
+        <item name="randomColor11">#FF4500</item>
+        <item name="randomColor12">#800000</item>
+        <item name="randomColor13">#008080</item>
+        <item name="randomColor14">#FFFFE0</item>
+        <item name="randomColor15">#FF1493</item>
+        <item name="randomColor16">#000080</item>
+        <item name="randomColor17">#FFD700</item>
+        <item name="randomColor18">#DC143C</item>
+        <item name="randomColor19">#808080</item>
+        <item name="randomColor20">#FF00FF</item>
+    </array>
+</resources>
