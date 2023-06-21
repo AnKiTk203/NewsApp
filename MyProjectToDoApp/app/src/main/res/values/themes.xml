@@ -1,0 +1,17 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyProjectToDoApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="Theme.MyProjectToDoApp.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="Theme.MyProjectToDoApp.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="Theme.MyProjectToDoApp" parent="Base.Theme.MyProjectToDoApp" />
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Combined</string>
+    <string name="close_app" />
+    <string name="give_feedback" />
+    <string name="add_contact" />
+    <string name="settings" />
+    <string name="favorites">\n\n</string>
+    <string name="third_activity">Third Activity</string>
+    <string name="name">Name</string>
+    <string name="order">Order</string>
+</resources>
