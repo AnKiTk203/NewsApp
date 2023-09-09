@@ -1,5 +1,6 @@
 package com.example.fragments
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -8,8 +9,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val firstFragment = First_Fragment()
-        val secondFragment = Second_Fragment()
+        val firstFragment = FirstFragment()
+        val secondFragment = SecondFragment()
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragment,firstFragment)
             commit()

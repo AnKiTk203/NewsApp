@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="textColorDark">#09E7E3</color>
+    <color name="green">#FF388E3C</color>
+    <color name="background">#D3D4D6</color>
+    <color name="textColor">#000000</color>
+    <color name="colorAccent2">#FFC107</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#459DE4</color>
+    <color name="red">#FF0000</color>
+
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorLightBlue">#0DA2E6</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorSecondary">#FF5722</color>
+    <color name="colorButton">#4CAF50</color>
+    <color name="colorMain">#E58A2FBA</color>
+    <color name="colorAppBar">#C8661E8C</color>
+    <color name="text">#030303</color>
+</resources>

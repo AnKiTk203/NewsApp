@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+    </style>
+    <style name="AppThemeNoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorOnPrimary">@color/text</item>
+
+    </style>
+    <color name="colorOnPrimary">#000000</color>
+    <color name="colorPrimary2">#3F51B5</color>
+</resources>

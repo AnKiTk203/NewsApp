@@ -146,7 +146,7 @@ class TaskActivity : AppCompatActivity(), View.OnClickListener {
         myCalendar.set(Calendar.HOUR_OF_DAY, timeCalendar.get(Calendar.HOUR_OF_DAY))
         myCalendar.set(Calendar.MINUTE, timeCalendar.get(Calendar.MINUTE))
 
-       alarmManager.set(
+       alarmManager.setExact(
            AlarmManager.RTC_WAKEUP,
           myCalendar.timeInMillis,
            pendingIntent
