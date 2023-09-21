@@ -1,10 +1,12 @@
 package com.codingblocks.newsapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.codingblocks.newsapp.databinding.FragmentArticleBinding
+import com.google.gson.Gson
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +19,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ArticleFragment : Fragment() {
+    private lateinit var binding1 : FragmentArticleBinding
+    private val binding get() = binding1
+    private lateinit var news: Headlines
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -32,9 +37,26 @@ class ArticleFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_article, container, false)
+    ): View {
+        binding1 = FragmentArticleBinding.inflate(inflater,container,false)
+        val view = binding.root
+        return (view)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val bundle = arguments
+        val json = bundle!!.getString("NEWS")
+        news = Gson().fromJson(json, Headlines::class.java)
+        binding.tvArticle.text = news.article
+        binding.ivImage.setImageResource(news.image)
+        binding.tvHead.text = news.headline
+
+        binding.btnGoBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
     }
 
     companion object {

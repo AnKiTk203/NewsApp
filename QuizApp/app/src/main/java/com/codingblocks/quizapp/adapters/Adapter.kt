@@ -41,7 +41,7 @@ class Adapter(private val context: Context, private val quizzes: List<Quiz>):
             Toast.makeText(context,quizzes[position].title,Toast.LENGTH_SHORT).show()
         }
     }
-    inner class QuizViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class QuizViewHolder(itemView: View) :ViewHolder(itemView) {
         var textViewTitle: TextView = itemView.findViewById(R.id.tvTitle)
         var iconView: ImageView = itemView.findViewById(R.id.quizIcon)
         var cardContainer: CardView = itemView.findViewById(R.id.cardContainer)

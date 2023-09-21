@@ -17,6 +17,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.protobuf.NullValue
+import java.lang.Exception
 import java.sql.Date
 import java.text.SimpleDateFormat
 
@@ -32,13 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
-        binding.btnSignOut.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val it = Intent(this, Login::class.java)
-            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show()
-            startActivity(it)
-            finish()
-        }
+
         setContentView(view)
         setUpViews()
         setUpDatePicker()
@@ -103,6 +98,17 @@ class MainActivity : AppCompatActivity() {
             R.string.app_name
         )
         actionBarDrawerToggle.syncState()
+        binding.navigationDrawer.setNavigationItemSelectedListener {
+         val intent =  when(it.itemId) {
+             R.id.btnProfile ->
+                 Intent(this, ProfileActivity::class.java)
+
+             else ->
+                 Intent(this, MainActivity::class.java)
+         }
+            startActivity(intent)
+            true
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
