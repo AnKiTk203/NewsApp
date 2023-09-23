@@ -17,6 +17,7 @@
         app:title="News App"
         app:titleTextColor="@color/white" />
 
+<<<<<<< HEAD
     <TextView
         android:id="@+id/tvBreaking"
         android:layout_width="match_parent"
@@ -28,10 +29,13 @@
         android:textSize="32sp"
         app:layout_constraintTop_toBottomOf="@+id/appBar" />
 
+=======
+>>>>>>> github/master
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+<<<<<<< HEAD
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,3 +45,12 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> github/master
