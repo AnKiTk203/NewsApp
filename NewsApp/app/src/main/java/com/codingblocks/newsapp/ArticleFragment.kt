@@ -49,9 +49,9 @@ class ArticleFragment : Fragment() {
         val bundle = arguments
         val json = bundle!!.getString("NEWS")
         news = Gson().fromJson(json, Headlines::class.java)
-        binding.tvArticle.text = news.article
-        binding.ivImage.setImageResource(news.image)
-        binding.tvHead.text = news.headline
+        binding.tvArticle.text = news.content
+        binding.ivImage.setImageResource(news.urlToImage.toInt())
+        binding.tvHead.text = news.title
 
         binding.btnGoBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()

@@ -2,7 +2,6 @@ package com.codingblocks.newsapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity(){
 
@@ -14,7 +13,7 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    private fun replaceFragment(homeFragment: Fragment) {
+    private fun replaceFragment(homeFragment: HomeFragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frameLayout,homeFragment)

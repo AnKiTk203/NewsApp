@@ -1,5 +1,6 @@
 package com.codingblocks.newsapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class Adapter(
-    private val news: ArrayList<Headlines>,
     private val onItemClicked: (Headlines)->Unit
 ):RecyclerView.Adapter<Adapter.HeadlinesViewHolder>()
 {
-
+    private val news: ArrayList<Headlines> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeadlinesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemview,parent,false)
         return HeadlinesViewHolder(view)
@@ -25,12 +25,18 @@ class Adapter(
     override fun onBindViewHolder(holder: HeadlinesViewHolder, position: Int)
     {
         val currentItem = news[position]
-        holder.headline.text = currentItem.headline
-        holder.date.text = currentItem.date
-        holder.image.setImageResource(currentItem.image)
+        holder.headline.text = currentItem.title
+        holder.date.text = currentItem.publishedAt
+        holder.image.setImageResource(currentItem.urlToImage.toInt())
                 holder.itemView.setOnClickListener {
                     onItemClicked(currentItem)
                 }
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateNews(updatedNews: ArrayList<Headlines>){
+        news.clear()
+        news.addAll(updatedNews)
+        notifyDataSetChanged()
     }
     inner class HeadlinesViewHolder(itemView: View):ViewHolder(itemView)
     {

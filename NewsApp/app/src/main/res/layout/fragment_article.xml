@@ -17,14 +17,15 @@
         app:layout_constraintBottom_toTopOf="@+id/svNews"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHead" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHead"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/tvHead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Biden aims to expand vaccines for adults and children"
+        android:text="@string/biden_aims_to_expand_vaccines_for_adults_and_children"
         android:textSize="24sp"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -61,7 +62,7 @@
         android:id="@+id/btnGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go Back"
+        android:text="@string/go_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
