@@ -1,6 +1,6 @@
 package com.codingblocks.newsapp
 
-data class Headlines(
+data class Articles(
     var content: String,
     var publishedAt : String,
     var urlToImage: String,

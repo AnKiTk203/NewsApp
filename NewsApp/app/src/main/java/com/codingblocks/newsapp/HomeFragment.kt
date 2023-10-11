@@ -1,6 +1,7 @@
 package com.codingblocks.newsapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,9 +29,10 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var adapter: Adapter
     private lateinit var mAdapter: Adapter
     private lateinit var recyclerView: RecyclerView
-    private var newsList: ArrayList<Headlines> = ArrayList()
+    private var newsList: ArrayList<Articles> = ArrayList()
     private var retryCount = 0
     private val maxRetry = 3
 
@@ -78,101 +80,33 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fetchData()
-        val layoutManager = LinearLayoutManager(context)
+        getData()
         recyclerView = view.findViewById(R.id.rvHeadLines)
-        recyclerView.layoutManager = layoutManager
-        mAdapter = Adapter(::onItemClicked)
-        recyclerView.adapter = mAdapter
     }
 
-    private fun fetchData() {
-
-        val queue = Volley.newRequestQueue(context)
-        val url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8187ba8f2544412eabbcb3716989f8ca"
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, url, null, {
-                val jsonArray = it.getJSONArray("articles")
-                for (i in 0 until jsonArray.length()) {
-                    val newsJsonObject = jsonArray.getJSONObject(i)
-                    val news = Headlines(
-                        newsJsonObject.getString("content"),
-                        newsJsonObject.getString("publishedAt"),
-                        newsJsonObject.getString("urlToImage"),
-                        newsJsonObject.getString("title")
-                    )
-                    newsList.add(news)
+    private fun getData() {
+        //Creating Instance of my retrofit object
+        val news = NewsService.newsInstance.getHeadlines()
+        news.enqueue(object: Callback<NewsData>{
+            override fun onResponse(call: Call<NewsData>, response: Response<NewsData>) {
+                val news = response.body()
+                if(news!=null)
+                {
+                    Log.d("Ankit",news.toString())
+                    mAdapter = Adapter(::onItemClicked,this@HomeFragment, news.articles)
+                    recyclerView.adapter = mAdapter
+                    val layoutManager = LinearLayoutManager(context)
+                    recyclerView.layoutManager = layoutManager
                 }
-                mAdapter.updateNews(newsList)
             }
-        ) {
-            if (retryCount < maxRetry) {
-                // Retry the request
-                Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
-                retryCount++
-                fetchData()
-            } else {
-                // Maximum retry attempts reached, handle the error
-                Toast.makeText(
-                    context,
-                    "Failed to fetch data after $maxRetry retries",
-                    Toast.LENGTH_LONG
-                ).show()
+            override fun onFailure(call: Call<NewsData>, t: Throwable) {
+                Log.d("ankit","FAILURE",t)
             }
-        }
-        queue.add(jsonObjectRequest)
+        })
+
     }
 
-    //    private fun dataInitialization(){
-//
-//        newsList = arrayListOf()
-//        imageId = arrayListOf(
-//            R.drawable.a,
-//            R.drawable.b,
-//            R.drawable.c,
-//            R.drawable.d,
-//            R.drawable.e,
-//            R.drawable.f,
-//            R.drawable.g,
-//            R.drawable.h,
-//            R.drawable.i,
-//            R.drawable.j
-//        )
-//        headlines = arrayListOf(
-//            getString(R.string.head_1),
-//            getString(R.string.head_2),
-//            getString(R.string.head_3),
-//            getString(R.string.head_4),
-//            getString(R.string.head_5),
-//            getString(R.string.head_6),
-//            getString(R.string.head_7),
-//            getString(R.string.head_8),
-//            getString(R.string.head_9),
-//            getString(R.string.head_10)
-//        )
-//        article = arrayListOf(
-//            getString(R.string.news_a),
-//            getString(R.string.news_b),
-//            getString(R.string.news_c),
-//            getString(R.string.news_d),
-//            getString(R.string.news_e),
-//            getString(R.string.news_f),
-//            getString(R.string.news_g),
-//            getString(R.string.news_h),
-//            getString(R.string.news_i),
-//            getString(R.string.news_j)
-//        )
-//        date = arrayListOf(
-//            "01-09-23", "02-09-23", "03-09-23", "04-09-23", "05-09-23", "06-09-23", "07-09-23",
-//            "08-09-23", "09-09-23", "10-09-23"
-//        )
-//        for( i in imageId.indices)
-//        {
-//            val news = Headlines(article[i],date[i],imageId[i], headlines[i])
-//            newsList.add(news)
-//        }
-//    }
-    private fun onItemClicked(data: Headlines) {
+    private fun onItemClicked(data: Articles) {
         val bundle = Bundle()
         val json = Gson().toJson(data)
         bundle.putString("NEWS", json)

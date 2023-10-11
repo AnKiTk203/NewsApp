@@ -21,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
 class ArticleFragment : Fragment() {
     private lateinit var binding1 : FragmentArticleBinding
     private val binding get() = binding1
-    private lateinit var news: Headlines
+    private lateinit var news: Articles
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -48,9 +48,9 @@ class ArticleFragment : Fragment() {
 
         val bundle = arguments
         val json = bundle!!.getString("NEWS")
-        news = Gson().fromJson(json, Headlines::class.java)
+        news = Gson().fromJson(json, Articles::class.java)
         binding.tvArticle.text = news.content
-        binding.ivImage.setImageResource(news.urlToImage.toInt())
+//        binding.ivImage.setImageResource(news.urlToImage.toInt())
         binding.tvHead.text = news.title
 
         binding.btnGoBack.setOnClickListener {
