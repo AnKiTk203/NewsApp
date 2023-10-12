@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.codingblocks.newsapp.databinding.FragmentArticleBinding
 import com.google.gson.Gson
 
@@ -50,13 +51,12 @@ class ArticleFragment : Fragment() {
         val json = bundle!!.getString("NEWS")
         news = Gson().fromJson(json, Articles::class.java)
         binding.tvArticle.text = news.content
-//        binding.ivImage.setImageResource(news.urlToImage.toInt())
+        Glide.with(this).load(news.urlToImage).into(binding.ivImage)
         binding.tvHead.text = news.title
-
-        binding.btnGoBack.setOnClickListener {
+        binding.btnGoBack.setOnClickListener()
+        {
             requireActivity().supportFragmentManager.popBackStack()
         }
-
     }
 
     companion object {

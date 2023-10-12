@@ -33,13 +33,6 @@ class HomeFragment : Fragment() {
     private lateinit var mAdapter: Adapter
     private lateinit var recyclerView: RecyclerView
     private var newsList: ArrayList<Articles> = ArrayList()
-    private var retryCount = 0
-    private val maxRetry = 3
-
-//    private late init var imageId : ArrayList<Int>
-//    private late init var headlines: ArrayList<String>
-//    private late init var date: ArrayList<String>
-//    private late init var article: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

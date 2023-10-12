@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 
 class Adapter(val onItemClicked: (Articles)->Unit,
-    context: HomeFragment, articles: ArrayList<Articles>
+              private val context: HomeFragment, articles: ArrayList<Articles>
 ):RecyclerView.Adapter<Adapter.HeadlinesViewHolder>()
 {
     private val news: ArrayList<Articles> = articles
@@ -26,8 +27,8 @@ class Adapter(val onItemClicked: (Articles)->Unit,
     {
         val currentItem = news[position]
         holder.headline.text = currentItem.title
-        holder.date.text = currentItem.publishedAt
-//        holder.image.setImageResource(currentItem.urlToImage.toInt())
+        currentItem.publishedAt.also { holder.date.text = it }
+        Glide.with(context).load(currentItem.urlToImage).into(holder.image)
                 holder.itemView.setOnClickListener {
                     onItemClicked(currentItem)
                 }
