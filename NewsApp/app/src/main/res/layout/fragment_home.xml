@@ -3,13 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_view_shrimmer" />
+
+            <include layout="@layout/item_view_shrimmer" />
+
+            <include layout="@layout/item_view_shrimmer" />
+
+            <include layout="@layout/item_view_shrimmer" />
+
+            <include layout="@layout/item_view_shrimmer" />
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"></FrameLayout>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHeadLines"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
+        android:visibility="gone"
+        android:layout_below="@+id/shimmer"
         tools:listitem="@layout/itemview"
-        android:focusable="true" />
+        android:background="@color/background"
+        android:focusable="true"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/refreshButton"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="25dp"
+        android:layout_marginStart="330dp"
+        android:src="@drawable/baseline_refresh_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </FrameLayout>

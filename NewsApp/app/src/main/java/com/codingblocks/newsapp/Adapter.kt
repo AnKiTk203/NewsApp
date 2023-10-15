@@ -32,6 +32,7 @@ class Adapter(val onItemClicked: (Articles)->Unit,
                 holder.itemView.setOnClickListener {
                     onItemClicked(currentItem)
                 }
+
     }
     @SuppressLint("NotifyDataSetChanged")
     fun updateNews(updatedNews: ArrayList<Articles>){

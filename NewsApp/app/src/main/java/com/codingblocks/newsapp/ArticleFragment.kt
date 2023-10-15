@@ -1,5 +1,6 @@
 package com.codingblocks.newsapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,18 +47,31 @@ class ArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val bundle = arguments
         val json = bundle!!.getString("NEWS")
         news = Gson().fromJson(json, Articles::class.java)
         binding.tvArticle.text = news.content
         Glide.with(this).load(news.urlToImage).into(binding.ivImage)
         binding.tvHead.text = news.title
+        val it = Intent(requireActivity(), DetailsActivity::class.java, )
+        it.putExtra("URL",news.url)
+        binding.tvHead.setOnClickListener{
+            val it = Intent(requireActivity(), DetailsActivity::class.java, )
+            it.putExtra("URL",news.url)
+            startActivity(it)
+        }
+        binding.ivImage.setOnClickListener{
+            val it = Intent(requireActivity(), DetailsActivity::class.java, )
+            it.putExtra("URL",news.url)
+            startActivity(it)
+        }
         binding.btnGoBack.setOnClickListener()
         {
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
+
+
 
     companion object {
         /**
